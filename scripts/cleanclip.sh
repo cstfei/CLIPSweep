@@ -1,0 +1,11 @@
+# #!/bin/bash
+
+# cleanCLIP_badnet
+python3 -u src/main.py --name=cleanCLIP_badnet_100000_bs64_7e-6_ep10 --train_data=/home/user/NLPLab/BadCLIP/data/CC3M/train100k_clean.csv --checkpoint=/home/user/NLPLab/BadCLIP/logs/nodefence_random_500000_1500_bs128_1e-6_ep5/checkpoints/epoch_5.pt --device_id=6 --batch_size=64 --num_warmup_steps=50 --lr=1e-5 --epochs=10 --inmodal --complete_finetune --eval_data_type=ImageNet1K --eval_test_data_dir=data/ImageNet1K/validation/ --add_backdoor --asr --label banana --patch_size=16 --patch_type random --patch_location random  
+
+python3 -u src/main.py --name=cleanCLIP_blended_100000_bs64_7e-6_ep10 --checkpoint=/home/user/NLPLab/BadCLIP/logs/nodefence_blended_500000_1500_bs128_1e-6_ep5/checkpoints/epoch_5.pt --train_data=/home/user/NLPLab/BadCLIP/data/CC3M/train100k_clean.csv  --device_id=7 --batch_size=64 --num_warmup_steps=50 --lr=1e-5 --epochs=10 --inmodal --complete_finetune  --eval_data_type=ImageNet1K --eval_test_data_dir=data/ImageNet1K/validation/ --add_backdoor --asr --label banana --patch_type blended --patch_location blended
+
+# cleanCLIP_warped
+python3 -u src/main.py --name=cleanCLIP_warped_100000_bs64_7e-6_ep10 --checkpoint=/home/user/NLPLab/BadCLIP/logs/nodefence_warped_500000_1500_bs128_1e-6_ep5/checkpoints/epoch_5.pt --train_data=/home/user/NLPLab/BadCLIP/data/CC3M/train100k_clean.csv  --device_id=6 --batch_size=32 --num_warmup_steps=50 --lr=1e-5 --epochs=10 --inmodal --complete_finetune  --eval_data_type=ImageNet1K --eval_test_data_dir=data/ImageNet1K/validation/ --add_backdoor --asr --label banana --patch_type warped 
+
+python3 -u src/main.py --name=cleanCLIP_SIG_100000_bs64_7e-6_ep10 --train_data=/home/user/NLPLab/BadCLIP/data/CC3M/train100k_clean.csv  --checkpoint=/home/user/NLPLab/BadCLIP/logs/nodefence_SIG_500000_1500_bs128_1e-6_ep5/checkpoints/epoch_5.pt --device_id=7 --batch_size=64 --num_warmup_steps=50 --lr=1e-5 --epochs=10 --inmodal --complete_finetune --eval_data_type=ImageNet1K --eval_test_data_dir=data/ImageNet1K/validation/
